@@ -18,6 +18,8 @@ public class Bot extends Players{
 
     }
 
+    
+
     public Schlag SchlagAnsagen() {
 
         int[] counters = {0, 0, 0, 0, 0, 0, 0, 0};  //7,8,9,10,U,O,K,S
@@ -53,11 +55,11 @@ public class Bot extends Players{
 
 
         for (int i = 0; i < 4; i++) {
-            if (hand.get(i).getFarbe().equals(Farbe.EICHEL)) {
+            if (hand.get(i).getFarbe.equals(Farbe.EICHEL)) {
                 counters[0]++;
-            } else if (hand.get(i).getFarbe().equals(Farbe.GRAS)) {
+            } else if (hand.get(i).getFarbe.equals(Farbe.GRAS)) {
                 counters[1]++;
-            } else if (hand.get(i).getFarbe().equals(Farbe.HERZ)) {
+            } else if (hand.get(i).getFarbe.equals(Farbe.HERZ)) {
                 counters[2]++;
             } else counters[3]++;
         }
@@ -67,9 +69,10 @@ public class Bot extends Players{
     public void Wertezuweisen(ArrayList<Card> hand, Farbe angesagteFarbe, Schlag angesagterSchlag){
 
 
-            for (int i = 0; i < hand.size(); i++) {
+        for(int i = 0; i < hand.size(); i++){
 
-                werte.add(giveValence(hand.get(i), angesagteFarbe, angesagterSchlag));
+            werte.add(giveValence(hand.get(i),angesagteFarbe, angesagterSchlag));
+            
 
 
             }
