@@ -110,13 +110,15 @@ public class BoardWattn {
         for (int i = 0; i < cardsPlayed.size(); i++) {
             int valance = giveValence(cardsPlayed.get(i));
             valances[i] = valance;
-            if (valance > valances[highestValenceIndex]) {
+            if (valance > valances[highestValenceIndex]||i==0) {
                 highestDouble = false;
                 highestValenceIndex = i;
+                continue;
             } else if (valance == valances[highestValenceIndex]) {
                 highestDouble = true;
             }
         }
+
         if (!highestDouble) {
             return highestValenceIndex;
         }
@@ -127,10 +129,6 @@ public class BoardWattn {
                     return i;
                 }
             }
-        }
-
-        if(valances[highestValenceIndex]!=0){
-            System.out.println("ERRRRRORRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
 
         Card untersteKarte = cardsPlayed.get(0);
@@ -157,6 +155,7 @@ public class BoardWattn {
                 return i;
             }
         }
+
         return 0;
     }
 
