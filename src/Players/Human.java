@@ -48,7 +48,7 @@ public class Human extends Players {
     public Card playCard(ArrayList<Card> playedCards, Schlag angesagterSchlag, Farbe angesagteFarbe) {
         System.out.println("already played cards:");
         for(int i = 0;i<playedCards.size();i++){
-            System.out.println(i + ": " + playedCards.get(i).getSchlag() + " " + playedCards.get(i).getFarbe());
+            System.out.println(playedCards.get(i).getSchlag() + " " + playedCards.get(i).getFarbe());
         }
 
         Scanner scanner = new Scanner(System.in);
