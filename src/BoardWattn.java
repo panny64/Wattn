@@ -1,14 +1,16 @@
+import Cards.Card;
+import Players.*;
 import java.util.ArrayList;
 
 public class BoardWattn {
-    Player [] players;
+    Players [] players;
     int [] scores;
     ArrayList<Card> cardsPlayed;
     int ausspielerIndex;
     int aktuellerSpieler;
 
     public BoardWattn(){
-        players = new Player[4];
+        players = new Players[4];
         scores = new int[4];
         cardsPlayed = new ArrayList<Card>();
         ausspielerIndex = 0;

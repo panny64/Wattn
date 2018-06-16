@@ -11,11 +11,12 @@ public class Human extends Players {
     public Human(){
         ArrayList<Card> hand = new ArrayList<>();
     }
-    Schlag SchlagAnsagen(){
+
+    public Schlag SchlagAnsagen(){
         return Schlag.NEUN;
     }
 
-    Farbe FarbeAnsagen(){
+    public Farbe FarbeAnsagen(){
         return Farbe.EICHEL;
     }
 }

@@ -8,17 +8,15 @@ import java.util.ArrayList;
 
 public class Bot extends Players{
 
-
-
     public Bot(){
         ArrayList<Card> hand = new ArrayList<>();
     }
 
-    Schlag SchlagAnsagen(){
+    public Schlag SchlagAnsagen(){
         return Schlag.NEUN;
     }
 
-    Farbe FarbeAnsagen(){
+    public Farbe FarbeAnsagen(){
         return Farbe.EICHEL;
     }
 }
