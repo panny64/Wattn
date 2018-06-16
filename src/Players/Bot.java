@@ -1,14 +1,13 @@
 package Players;
 
-
 import Cards.Card;
 import Cards.Farbe;
 import Cards.Schlag;
 
-
 import java.util.ArrayList;
+import java.util.Map;
 
-public class Bot extends Players {
+public class Bot extends Players{
 
     ArrayList<Card> hand;
     ArrayList<Integer> werte;
@@ -19,6 +18,7 @@ public class Bot extends Players {
 
     }
 
+    
 
 
     public Schlag SchlagAnsagen() {
@@ -49,106 +49,41 @@ public class Bot extends Players {
         return schlag[index];
     }
 
-    public Farbe FarbeAnsagen() {
+    public Farbe FarbeAnsagen(){
 
         int[] counters = {0, 0, 0, 0};     //Eichel,Gras,Herz,Schellen
         Farbe[] farben = {Farbe.EICHEL, Farbe.GRAS, Farbe.HERZ, Farbe.SCHELLEN};
+       
 
-<<<<<<< Updated upstream
-||||||| merged common ancestors
-        int[] counters = new {0,0,0,0};     //Eichel,Gras,Herz,Schellen
-=======
-        int[] counters = {0,0,0,0}; //Eichel,Gras,Herz,Schellen
-        Farbe aktuell = Farbe.
->>>>>>> Stashed changes
-
-<<<<<<< Updated upstream
-        for (int i = 0; i < hand.size(); i++) {
-            for (int j = 0; j < farben.length; j++) {
-                if (farben[j] == hand.get(i).getFarbe()) {
-                    counters[j]++;
-                }
-||||||| merged common ancestors
         for(int i = 0; i<4;i++){
             if(hand.get(i).getFarbe.equals(Farbe.EICHEL)){
                 counters[0]++;
-=======
-        for(int i = 0; i<4;i++){
-            if(hand.get(i).getFarbe().equals(Farbe.EICHEL)){
-                counters[0]++;
->>>>>>> Stashed changes
             }
-<<<<<<< Updated upstream
-        }
-
-        int index = 0;
-        int maxvalue= 0;
-
-        for (int i = 0; i < counters.length; i++) {
-            if(counters[i] > maxvalue){
-                index = i;
-                maxvalue = counters[i];
-||||||| merged common ancestors
             else if(hand.get(i).getFarbe.equals(Farbe.GRAS)){
                 counters[1]++;
-=======
-            else if(hand.get(i).getFarbe().equals(Farbe.GRAS)){
-                counters[1]++;
->>>>>>> Stashed changes
             }
-<<<<<<< Updated upstream
-        }
-
-        return farben[index];
-    }
-
-    @Override
-    public Card playCard(ArrayList<Card> cardsPlayed, Schlag angesagterSchlag, Farbe angesagteFarbe) {
-        Card top = new Card(Farbe.HERZ, Schlag.KÖNIG);
-        int z = contain(top);
-        if(z > 0) {
-            return hand.remove(z);
-        }
-        return hand.remove(0);
-    }
-
-    public int contain(Card c){
-        for(int i = 0;i < hand.size(); i++){
-            if(c.equals(hand.get(i))){
-                return i;
-||||||| merged common ancestors
             else if(hand.get(i).getFarbe.equals(Farbe.HERZ)){
                 counters[2]++;
-=======
-            else if(hand.get(i).getFarbe().equals(Farbe.HERZ)){
-                counters[2]++;
->>>>>>> Stashed changes
             }
-
+            else counters[3]++;
         }
-        return -1;
-    }
+	return Farbe.EICHEL;
 
     public void Wertezuweisen(ArrayList<Card> hand, Farbe angesagteFarbe, Schlag angesagterSchlag){
 
-<<<<<<< Updated upstream
+
         for(int i = 0; i < hand.size(); i++){
 
             werte.add(giveValence(hand.get(i),angesagteFarbe, angesagterSchlag));
             
 
         }
-||||||| merged common ancestors
-        if()
-=======
-        if(counters[0]>counters[1]){
-
-        }
->>>>>>> Stashed changes
 
 
 
-    }
+
+        
+    
 
 
 
