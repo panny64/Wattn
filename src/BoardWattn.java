@@ -1,15 +1,16 @@
 import Cards.Card;
 import Players.*;
+
 import java.util.ArrayList;
 
 public class BoardWattn {
-    Players [] players;
-    int [] scores;
+    Players[] players;
+    int[] scores;
     ArrayList<Card> cardsPlayed;
     int ausspielerIndex;
     int aktuellerSpieler;
 
-    public BoardWattn(){
+    public BoardWattn() {
         players = new Players[4];
         scores = new int[4];
         cardsPlayed = new ArrayList<Card>();
@@ -21,34 +22,34 @@ public class BoardWattn {
         players[3] = new Bot();
     }
 
-    public void tick(){
+    public void tick() {
         int playerWhoWon = -1;
 
-        if(cardsPlayed.size() == 4){
+        if (cardsPlayed.size() == 4) {
             playerWhoWon = (ausspielerIndex + eval(cardsPlayed)) % 4;
             ausspielerIndex = playerWhoWon;
             scores[playerWhoWon]++;
 
-            while(!cardsPlayed.isEmpty()){
+            while (!cardsPlayed.isEmpty()) {
                 cardsPlayed.remove(0);
             }
 
             aktuellerSpieler = ausspielerIndex;
-        }else{
+        } else {
             playCard(aktuellerSpieler);
-            aktuellerSpieler = (aktuellerSpieler+1)%4;
+            aktuellerSpieler = (aktuellerSpieler + 1) % 4;
         }
     }
 
-    public void playCard(int playerIndex){
+    public void playCard(int playerIndex) {
         cardsPlayed.add(players[playerIndex].playCard());
     }
 
-    public void render(){
+    public void render() {
 
     }
 
-    public int eval(ArrayList<Card> cardsPlayed){
+    public int eval(ArrayList<Card> cardsPlayed) {
         return 0;
     }
 }

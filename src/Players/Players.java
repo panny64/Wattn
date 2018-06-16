@@ -11,32 +11,31 @@ public abstract class Players {
     ArrayList<Card> hand = new ArrayList<>();
 
 
-    public void addCard(ArrayList<Card> cards){
+    public void addCard(ArrayList<Card> cards) {
 
-        while(!cards.isEmpty()){
+        while (!cards.isEmpty()) {
             hand.add(cards.remove(0));
         }
     }
 
-    public void emptyHands(){
+    public void emptyHands() {
 
-        while(!hand.isEmpty()){
+        while (!hand.isEmpty()) {
             hand.remove(0);
         }
     }
 
-    public Card playCard(){
+    public Card playCard() {
         return hand.remove(0);
     }
 
-    public Schlag SchlagAnsagen(){
+    public Schlag SchlagAnsagen() {
         return Schlag.NEUN;
     }
 
-    public Farbe FarbeAnsagen(){
+    public Farbe FarbeAnsagen() {
         return Farbe.EICHEL;
     }
-
 
 
 }
