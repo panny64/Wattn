@@ -38,10 +38,10 @@ public final class CardGen {
         Random random = new Random();
 
 
-        for(int i = 0; i < 1000; i++){
+        for(int i = 0; i < 100000; i++){
 
-            int x = random.nextInt(31) + 1;         //31 maximum und 1 Minimum
-            int y = random.nextInt(31) + 1;         //same
+            int x = random.nextInt(31);         //random.nextInt(31) kann 0-31 an Werten annehmen
+            int y = random.nextInt(31);         //same
 
            Card first =  sorted.get(x);
            Card second = sorted.get(y);
@@ -53,13 +53,44 @@ public final class CardGen {
         Stack<Card> shuffled = new Stack<>();
 
         while(!sorted.isEmpty()){
-            shuffled.add(sorted.remove(0));
+            shuffled.push(sorted.remove(0));
         }
 
         return shuffled;
 
     }
 
+
+    public static void main(String[] args) {
+
+        CardGen gen = new CardGen();
+        ArrayList<Card> mix = new ArrayList<>();
+
+        Schlag[] schlag = {Schlag.SIEBEN,Schlag.ACHT,Schlag.NEUN,Schlag.ZEHN,Schlag.UNTER,Schlag.OBER,Schlag.KÖNIG,Schlag.SAU};
+        Farbe[] farbe = {Farbe.EICHEL,Farbe.GRAS,Farbe.HERZ,Farbe.SCHELLEN};
+
+        for(int j = 0;j<farbe.length;j++){
+
+              for(int i = 0; i<schlag.length;i++){
+                mix.add(new Card(farbe[j],schlag[i]));
+            }
+        }
+        for(int i = 0; i < mix.size(); i++){
+            System.out.println(mix.get(i).getFarbe() + " " + mix.get(i).getSchlag() + " ");
+        }
+        System.out.println("");
+        System.out.println("Ab jetzt gemischt");
+        System.out.println("");
+
+        Stack<Card> stack = shuffle(mix);
+
+        for(int i = 0; i < 31; i++) {
+            System.out.println(stack.peek().getFarbe() + " " +  stack.peek().getSchlag());
+            stack.pop();
+
+        }
+
+    }
 
 
 
