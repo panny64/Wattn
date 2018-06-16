@@ -5,9 +5,8 @@ import java.util.Stack;
 public final class CardGen {
 
 
+    private CardGen() {
 
-    private CardGen(){
-        
     }
 
     public static Stack<Card> giveCards(){

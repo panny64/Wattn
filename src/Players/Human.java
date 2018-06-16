@@ -8,18 +8,17 @@ import java.util.ArrayList;
 
 public class Human extends Players {
 
-    public Human(){
+    public Human() {
         ArrayList<Card> hand = new ArrayList<>();
     }
 
-    public Schlag SchlagAnsagen(){
+    public Schlag SchlagAnsagen() {
         return Schlag.NEUN;
     }
 
-    public Farbe FarbeAnsagen(){
+    public Farbe FarbeAnsagen() {
         return Farbe.EICHEL;
     }
-
 
 
 }

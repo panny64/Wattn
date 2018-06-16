@@ -18,6 +18,7 @@ public class BoardWattn {
 
     public BoardWattn(){
         players = new Players[4];
+        scores = new int[4];
         cardsPlayed = new ArrayList<Card>();
         ausspielerIndex = 0;
         aktuellerSpieler = 0;
@@ -42,6 +43,7 @@ public class BoardWattn {
             while(!cardsPlayed.isEmpty()){
                 cardsPlayed.remove(0);
             }
+
             aktuellerSpieler = ausspielerIndex;
         }else{
             playCard(aktuellerSpieler);
