@@ -54,13 +54,31 @@ public class Bot extends Players {
         int[] counters = {0, 0, 0, 0};     //Eichel,Gras,Herz,Schellen
         Farbe[] farben = {Farbe.EICHEL, Farbe.GRAS, Farbe.HERZ, Farbe.SCHELLEN};
 
+<<<<<<< Updated upstream
+||||||| merged common ancestors
+        int[] counters = new {0,0,0,0};     //Eichel,Gras,Herz,Schellen
+=======
+        int[] counters = {0,0,0,0}; //Eichel,Gras,Herz,Schellen
+        Farbe aktuell = Farbe.
+>>>>>>> Stashed changes
 
+<<<<<<< Updated upstream
         for (int i = 0; i < hand.size(); i++) {
             for (int j = 0; j < farben.length; j++) {
                 if (farben[j] == hand.get(i).getFarbe()) {
                     counters[j]++;
                 }
+||||||| merged common ancestors
+        for(int i = 0; i<4;i++){
+            if(hand.get(i).getFarbe.equals(Farbe.EICHEL)){
+                counters[0]++;
+=======
+        for(int i = 0; i<4;i++){
+            if(hand.get(i).getFarbe().equals(Farbe.EICHEL)){
+                counters[0]++;
+>>>>>>> Stashed changes
             }
+<<<<<<< Updated upstream
         }
 
         int index = 0;
@@ -70,7 +88,15 @@ public class Bot extends Players {
             if(counters[i] > maxvalue){
                 index = i;
                 maxvalue = counters[i];
+||||||| merged common ancestors
+            else if(hand.get(i).getFarbe.equals(Farbe.GRAS)){
+                counters[1]++;
+=======
+            else if(hand.get(i).getFarbe().equals(Farbe.GRAS)){
+                counters[1]++;
+>>>>>>> Stashed changes
             }
+<<<<<<< Updated upstream
         }
 
         return farben[index];
@@ -90,6 +116,13 @@ public class Bot extends Players {
         for(int i = 0;i < hand.size(); i++){
             if(c.equals(hand.get(i))){
                 return i;
+||||||| merged common ancestors
+            else if(hand.get(i).getFarbe.equals(Farbe.HERZ)){
+                counters[2]++;
+=======
+            else if(hand.get(i).getFarbe().equals(Farbe.HERZ)){
+                counters[2]++;
+>>>>>>> Stashed changes
             }
 
         }
@@ -98,12 +131,20 @@ public class Bot extends Players {
 
     public void Wertezuweisen(ArrayList<Card> hand, Farbe angesagteFarbe, Schlag angesagterSchlag){
 
+<<<<<<< Updated upstream
         for(int i = 0; i < hand.size(); i++){
 
             werte.add(giveValence(hand.get(i),angesagteFarbe, angesagterSchlag));
             
 
         }
+||||||| merged common ancestors
+        if()
+=======
+        if(counters[0]>counters[1]){
+
+        }
+>>>>>>> Stashed changes
 
 
 
