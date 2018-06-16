@@ -10,9 +10,16 @@ import java.util.ArrayList;
 
 public class Bot extends Players {
 
+    ArrayList<Card> hand;
+    ArrayList<Integer> werte;
+
     public Bot() {
-        ArrayList<Card> hand = new ArrayList<>();
+        hand = new ArrayList<>();
+        werte = new ArrayList<>();
+
     }
+
+
 
     public Schlag SchlagAnsagen() {
 
@@ -26,6 +33,7 @@ public class Bot extends Players {
                 }
             }
         }
+
 
         int index = 0;
         int maxvalue = 0;
@@ -75,15 +83,6 @@ public class Bot extends Players {
         if(z > 0) {
             return hand.remove(z);
         }
-
-
-
-
-
-
-
-
-
         return hand.remove(0);
     }
 
@@ -95,5 +94,44 @@ public class Bot extends Players {
 
         }
         return -1;
+    }
+
+    public void Wertezuweisen(ArrayList<Card> hand, Farbe angesagteFarbe, Schlag angesagterSchlag){
+
+        for(int i = 0; i < hand.size(); i++){
+
+            werte.add(giveValence(hand.get(i),angesagteFarbe, angesagterSchlag));
+            
+
+        }
+
+
+
+    }
+
+
+
+
+    public int giveValence(Card c, Farbe angesagteFarbe, Schlag angesagterSchlag){
+        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
+
+        if(c.equals(new Card(Farbe.HERZ,Schlag.KÖNIG))){
+            return 13;
+        }else if(c.equals(new Card(Farbe.SCHELLEN,Schlag.SIEBEN))){
+            return 12;
+        }else if(c.equals(new Card(Farbe.EICHEL,Schlag.SIEBEN))){
+            return 11;
+        }else if(c.equals(new Card(angesagteFarbe,angesagterSchlag))){
+            return 10;
+        }else if(c.getSchlag()==angesagterSchlag){
+            return 9;
+        }else if(c.getFarbe()==angesagteFarbe){
+            for(int i= 8;i>=1;i--){
+                if(c.getSchlag() == schlag[i-1]){
+                    return i;
+                }
+            }
+        }
+        return 0;
     }
 }
