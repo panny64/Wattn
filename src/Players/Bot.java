@@ -21,22 +21,22 @@ public class Bot extends Players{
 
     public Farbe FarbeAnsagen(){
 
-        int[] counters = new {0,0,0,0};     //Eichel,Gras,Herz,Schellen
+        int[] counters = {0,0,0,0};     //Eichel,Gras,Herz,Schellen
 
         for(int i = 0; i<4;i++){
-            if(hand.get(i).getFarbe.equals(Farbe.EICHEL)){
+            if(hand.get(i).getFarbe().equals(Farbe.EICHEL)){
                 counters[0]++;
             }
-            else if(hand.get(i).getFarbe.equals(Farbe.GRAS)){
+            else if(hand.get(i).getFarbe().equals(Farbe.GRAS)){
                 counters[1]++;
             }
-            else if(hand.get(i).getFarbe.equals(Farbe.HERZ)){
+            else if(hand.get(i).getFarbe().equals(Farbe.HERZ)){
                 counters[2]++;
             }
             else counters[3]++;
         }
 
-        if()
+
 
 
 
