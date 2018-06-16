@@ -1,6 +1,9 @@
-package cards;
+package Cards;
 
-public class card {
+public class Card {
+
+    Farbe farbe;
+    Schlag schlag;
 
 
 
