@@ -6,7 +6,6 @@ import Cards.Schlag;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Human extends Players {
 
     public Human() {
