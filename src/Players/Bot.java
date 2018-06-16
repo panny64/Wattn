@@ -104,9 +104,13 @@ public class Bot extends Players{
 
     public Card playCard(ArrayList<Card> played, Farbe angesagteFarbe, Schlag angesagerSchlag){
         int c = contain(new Card(Farbe.HERZ, Schlag.KÖNIG));
-        if(played.isEmpty() && c>0){
+        if(played.isEmpty() && c > 0){
             return hand.remove(c);
         }
+
+
+
+
 
 
 
