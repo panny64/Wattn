@@ -95,19 +95,70 @@ public class BoardWattn {
     }
 
     public void playCard(int playerIndex){
-        cardsPlayed.add(players[playerIndex].playCard(cardsPlayed,angesagterSchlag,angesagteFarbe));
+        cardsPlayed.add(players[playerIndex].playCard(cardsPlayed));
     }
 
     public void render(){
 
     }
 
-    public int eval(ArrayList<Card> cardsPlayed){
-        for (int i = 0;i<cardsPlayed.size();i++){
-            System.out.println(cardsPlayed.get(i).getSchlag()+"  "+cardsPlayed.get(i).getFarbe());
-            System.out.println(giveValence(cardsPlayed.get(i)));
+    public int eval(ArrayList<Card> cardsPlayed) {
+
+        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
+        int[] valances = new int[4];
+        boolean highestDouble = false;
+        int highestValenceIndex = 0;
+
+        for (int i = 0; i < cardsPlayed.size(); i++) {
+            int valance = giveValence(cardsPlayed.get(i));
+            valances[i] = valance;
+            if (valance > valances[highestValenceIndex]) {
+                highestDouble = false;
+                highestValenceIndex = i;
+            } else if (valance == valances[highestValenceIndex]) {
+                highestDouble = true;
+            }
+        }
+        if (!highestDouble) {
+            return highestValenceIndex;
         }
 
+        if(valances[highestValenceIndex]==9){
+            for(int i = 0;i<valances.length;i++){
+                if(valances[i]==9){
+                    return i;
+                }
+            }
+        }
+
+        if(valances[highestValenceIndex]!=0){
+            System.out.println("ERRRRRORRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
+
+        Card untersteKarte = cardsPlayed.get(0);
+        Farbe untersteKarteFarbe = untersteKarte.getFarbe();
+        int höchsterSchlagIndex = -1;
+
+        for (int i = 0;i<schlag.length;i++){
+            if(schlag[i]==untersteKarte.getSchlag()){
+                höchsterSchlagIndex = i;
+                break;
+            }
+        }
+
+        for (int i = 1; i<cardsPlayed.size();i++){
+            for(int j = höchsterSchlagIndex;j<schlag.length;j++){
+                if(cardsPlayed.get(i).getFarbe() == untersteKarteFarbe && schlag[j] == cardsPlayed.get(i).getSchlag()){
+                    höchsterSchlagIndex = j;
+                }
+            }
+        }
+
+        for (int i = 0; i<cardsPlayed.size();i++){
+            if(untersteKarteFarbe == cardsPlayed.get(i).getFarbe() && cardsPlayed.get(i).getSchlag()==schlag[höchsterSchlagIndex]){
+                return i;
+            }
+        }
         return 0;
     }
 
