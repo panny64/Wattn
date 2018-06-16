@@ -101,4 +101,26 @@ public class Bot extends Players{
         }
         return 0;
     }
+
+    public Card playCard(ArrayList<Card> played, Farbe angesagteFarbe, Schlag angesagerSchlag){
+        int c = contain(new Card(Farbe.HERZ, Schlag.KÖNIG));
+        if(played.isEmpty() && c>0){
+            return hand.remove(c);
+        }
+
+
+
+        return hand.remove(0);
+    }
+
+    public int contain(Card c){
+        for(int i = 0; i < hand.size();i++){
+            if(c.getSchlag() == hand.get(i).getSchlag() && c.getFarbe() == hand.get(i).getFarbe()){
+                return i;
+            }
+        }
+        return  -1;
+    }
+
+
 }
