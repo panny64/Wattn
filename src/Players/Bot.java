@@ -5,7 +5,7 @@ import Cards.Farbe;
 import Cards.Schlag;
 
 import java.util.ArrayList;
-import java.util.Map;
+
 
 public class Bot extends Players{
 
@@ -55,11 +55,11 @@ public class Bot extends Players{
 
 
         for (int i = 0; i < 4; i++) {
-            if (hand.get(i).getFarbe.equals(Farbe.EICHEL)) {
+            if (hand.get(i).getFarbe().equals(Farbe.EICHEL)) {
                 counters[0]++;
-            } else if (hand.get(i).getFarbe.equals(Farbe.GRAS)) {
+            } else if (hand.get(i).getFarbe().equals(Farbe.GRAS)) {
                 counters[1]++;
-            } else if (hand.get(i).getFarbe.equals(Farbe.HERZ)) {
+            } else if (hand.get(i).getFarbe().equals(Farbe.HERZ)) {
                 counters[2]++;
             } else counters[3]++;
         }
