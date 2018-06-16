@@ -37,6 +37,14 @@ public abstract class Players {
         return Farbe.EICHEL;
     }
 
+    public void printHand(){
+        for(int i = 0;i<hand.size();i++){
+            System.out.print(hand.get(i).getFarbe() + "  " +hand.get(i).getSchlag() + "         ");
+        }
+
+        System.out.println();
+    }
+
 
 
 }

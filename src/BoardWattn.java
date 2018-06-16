@@ -1,8 +1,11 @@
 import Cards.Card;
+import Cards.CardGen;
 import Players.*;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class BoardWattn {
+    Stack<Card> allCards;
     Players [] players;
     int [] scores;
     ArrayList<Card> cardsPlayed;
@@ -19,9 +22,17 @@ public class BoardWattn {
         players[1] = new Bot();
         players[2] = new Bot();
         players[3] = new Bot();
+
+        allCards = CardGen.giveCards();
+
+        handOutCards();
+
+        for(int i = 0;i<players.length;i++){
+            players[i].printHand();
+        }
     }
 
-    public void tick(){
+    public void tick(){/*
         int playerWhoWon = -1;
 
         if(cardsPlayed.size() == 4){
@@ -37,6 +48,22 @@ public class BoardWattn {
         }else{
             playCard(aktuellerSpieler);
             aktuellerSpieler = (aktuellerSpieler+1)%4;
+        }*/
+    }
+
+    public void handOutCards(){
+        for(int i = 0;i<players.length;i++){
+            ArrayList<Card> l = new ArrayList<Card>();
+            l.add(allCards.pop());
+            l.add(allCards.pop());
+            l.add(allCards.pop());
+            players[i].addCard(l);
+        }
+        for(int i = 0;i<players.length;i++){
+            ArrayList<Card> l = new ArrayList<Card>();
+            l.add(allCards.pop());
+            l.add(allCards.pop());
+            players[i].addCard(l);
         }
     }
 
