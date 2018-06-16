@@ -58,8 +58,6 @@ public class BoardWattn {
             System.out.println("Team 2 won.");
             resetRound();
         }
-
-        System.out.println(Arrays.toString(scores));
     }
     public void resetRound(){
 
