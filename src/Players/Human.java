@@ -14,7 +14,19 @@ public class Human extends Players {
     }
 
     public Schlag SchlagAnsagen() {
-        return Schlag.NEUN;
+        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
+
+        System.out.println("Deine Karten:");
+        for(int i = 0;i<hand.size();i++){
+            System.out.println(hand.get(i).getSchlag() + " " + hand.get(i).getFarbe());
+        }
+        System.out.println("Bitte Schlag ansagen: ");
+        for(int i = 0;i<schlag.length;i++){
+            System.out.println(i + ": " +schlag[i]);
+        }
+        Scanner scanner = new Scanner(System.in);
+        int schlagIndex = Integer.parseInt(scanner.next());
+        return schlag[schlagIndex];
     }
 
     public Farbe FarbeAnsagen() {
@@ -22,7 +34,12 @@ public class Human extends Players {
     }
 
     @Override
-    public Card playCard() {
+    public Card playCard(ArrayList<Card> playedCards) {
+        System.out.println("already played cards:");
+        for(int i = 0;i<playedCards.size();i++){
+            System.out.println(i + ": " + playedCards.get(i).getSchlag() + " " + playedCards.get(i).getFarbe());
+        }
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Numbers for 0 to " + (hand.size() - 1));
 

@@ -1,5 +1,7 @@
 import Cards.Card;
 import Cards.CardGen;
+import Cards.Farbe;
+import Cards.Schlag;
 import Players.*;
 
 import java.lang.reflect.Array;
@@ -15,6 +17,8 @@ public class BoardWattn {
     ArrayList<Card> cardsPlayed;
     int ausspielerIndex;
     int aktuellerSpieler;
+    Schlag angesagterSchlag;
+    Farbe angesagteFarbe;
 
     public BoardWattn(){
         players = new Players[4];
@@ -61,6 +65,7 @@ public class BoardWattn {
         System.out.println(Arrays.toString(scores));
     }
     public void resetRound(){
+
         for(int i = 0;i<players.length;i++){
             players[i].emptyHands();
         }
@@ -71,6 +76,9 @@ public class BoardWattn {
             players[i].printHand();
         }
         scores = new int[4];
+
+        angesagterSchlag = players[0].SchlagAnsagen();
+        angesagteFarbe = players[1].FarbeAnsagen();
     }
 
     public void handOutCards(){
@@ -90,7 +98,7 @@ public class BoardWattn {
     }
 
     public void playCard(int playerIndex){
-        cardsPlayed.add(players[playerIndex].playCard());
+        cardsPlayed.add(players[playerIndex].playCard(cardsPlayed));
     }
 
     public void render(){

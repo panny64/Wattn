@@ -4,6 +4,7 @@ import Cards.Card;
 import Cards.Farbe;
 import Cards.Schlag;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public abstract class Players {
@@ -25,7 +26,7 @@ public abstract class Players {
         }
     }
 
-    public Card playCard() {
+    public Card playCard(ArrayList<Card> cardsPlayed) {
         return hand.remove(0);
     }
 
