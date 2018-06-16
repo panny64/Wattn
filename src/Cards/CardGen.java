@@ -38,7 +38,7 @@ public final class CardGen {
         Random random = new Random();
 
 
-        for(int i = 0; i < 100000; i++){
+        for(int i = 0; i < 1000000; i++){
 
             int x = random.nextInt(31);         //random.nextInt(31) kann 0-31 an Werten annehmen
             int y = random.nextInt(31);         //same
