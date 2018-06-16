@@ -14,6 +14,8 @@ import java.awt.image.BufferStrategy;
         private BufferStrategy bs;
         private Graphics g;
 
+        private BoardWattn boardWattn;
+
         public Game(String title, int width, int height){
             this.width = width;
             this.height = height;
@@ -23,11 +25,12 @@ import java.awt.image.BufferStrategy;
         private void init(){
             display = new Display(title, width, height);
 
+            boardWattn = new BoardWattn();
 
         }
 
         private void tick(){
-
+            boardWattn.tick();
         }
 
         private void render(){
