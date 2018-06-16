@@ -24,9 +24,9 @@ public class Human extends Players {
     @Override
     public Card playCard() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Numbers for 0 to " + (hand.size()-1));
+        System.out.println("Numbers for 0 to " + (hand.size() - 1));
 
-        for(int i = 0;i<hand.size();i++){
+        for (int i = 0; i < hand.size(); i++) {
             System.out.println(i + ": " + hand.get(i).getSchlag() + " " + hand.get(i).getFarbe());
         }
 
