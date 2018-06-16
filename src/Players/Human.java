@@ -19,4 +19,7 @@ public class Human extends Players {
     public Farbe FarbeAnsagen(){
         return Farbe.EICHEL;
     }
+
+
+
 }
