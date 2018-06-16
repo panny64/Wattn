@@ -29,7 +29,19 @@ public class Human extends Players {
     }
 
     public Farbe FarbeAnsagen() {
-        return Farbe.EICHEL;
+        Farbe[] farben = {Farbe.EICHEL, Farbe.GRAS, Farbe.HERZ, Farbe.SCHELLEN};
+
+        System.out.println("Deine Karten:");
+        for(int i = 0;i<hand.size();i++){
+            System.out.println(hand.get(i).getSchlag() + " " + hand.get(i).getFarbe());
+        }
+        System.out.println("Bitte Farbe ansagen: ");
+        for(int i = 0;i<farben.length;i++){
+            System.out.println(i + ": " +farben[i]);
+        }
+        Scanner scanner = new Scanner(System.in);
+        int farbIndex = Integer.parseInt(scanner.next());
+        return farben[farbIndex];
     }
 
     @Override
