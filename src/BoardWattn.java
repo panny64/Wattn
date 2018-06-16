@@ -95,7 +95,7 @@ public class BoardWattn {
     }
 
     public void playCard(int playerIndex){
-        cardsPlayed.add(players[playerIndex].playCard(cardsPlayed));
+        cardsPlayed.add(players[playerIndex].playCard(cardsPlayed,angesagterSchlag,angesagteFarbe));
     }
 
     public void render(){

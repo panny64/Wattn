@@ -45,7 +45,7 @@ public class Human extends Players {
     }
 
     @Override
-    public Card playCard(ArrayList<Card> playedCards) {
+    public Card playCard(ArrayList<Card> playedCards, Schlag angesagterSchlag, Farbe angesagteFarbe) {
         System.out.println("already played cards:");
         for(int i = 0;i<playedCards.size();i++){
             System.out.println(i + ": " + playedCards.get(i).getSchlag() + " " + playedCards.get(i).getFarbe());

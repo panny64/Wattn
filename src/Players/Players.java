@@ -26,7 +26,7 @@ public abstract class Players {
         }
     }
 
-    public Card playCard(ArrayList<Card> cardsPlayed) {
+    public Card playCard(ArrayList<Card> cardsPlayed, Schlag angesagterSchlag, Farbe angesagteFarbe) {
         return hand.remove(0);
     }
 

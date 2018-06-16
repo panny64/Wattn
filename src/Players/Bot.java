@@ -5,6 +5,7 @@ import Cards.Card;
 import Cards.Farbe;
 import Cards.Schlag;
 
+
 import java.util.ArrayList;
 
 public class Bot extends Players {
@@ -67,4 +68,32 @@ public class Bot extends Players {
         return farben[index];
     }
 
+    @Override
+    public Card playCard(ArrayList<Card> cardsPlayed, Schlag angesagterSchlag, Farbe angesagteFarbe) {
+        Card top = new Card(Farbe.HERZ, Schlag.KÖNIG);
+        int z = contain(top);
+        if(z > 0) {
+            return hand.remove(z);
+        }
+
+
+
+
+
+
+
+
+
+        return hand.remove(0);
+    }
+
+    public int contain(Card c){
+        for(int i = 0;i < hand.size(); i++){
+            if(c.equals(hand.get(i))){
+                return i;
+            }
+
+        }
+        return -1;
+    }
 }
