@@ -26,9 +26,8 @@ public abstract class Players {
         }
     }
 
-    public Card playCard(ArrayList<Card> cardsPlayed, Schlag angesagterSchlag, Farbe angesagteFarbe) {
-        return hand.remove(0);
-    }
+    public abstract Card playCard(ArrayList<Card> cardsPlayed, Schlag angesagterSchlag, Farbe angesagteFarbe);
+
 
     public Schlag SchlagAnsagen() {
         return Schlag.NEUN;

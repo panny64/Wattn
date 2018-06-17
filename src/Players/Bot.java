@@ -18,7 +18,7 @@ public class Bot extends Players{
 
     }
 
-    
+
 
     public Schlag SchlagAnsagen() {
 
@@ -72,7 +72,7 @@ public class Bot extends Players{
         for(int i = 0; i < hand.size(); i++){
 
             werte.add(giveValence(hand.get(i),angesagteFarbe, angesagterSchlag));
-            
+
 
 
             }
@@ -101,10 +101,10 @@ public class Bot extends Players{
         }
         return 0;
     }
+    @Override
+    public Card playCard(ArrayList<Card> played,Schlag angesagerSchlag,Farbe angesagteFarbe){
 
-    public Card playCard(ArrayList<Card> played, Farbe angesagteFarbe, Schlag angesagerSchlag){
-
-        int anzahl = played.size();                                                             //Anzahl der gespielten Karten
+        int anzahl = played.size();                                                                //Anzahl der gespielten Karten
         ArrayList<Integer> playedvalues = new ArrayList<>();                                       //Übersetzen der bereits gespielten Karten in ihre Werte
 
         for(int i = 0; i < played.size(); i++){
@@ -123,6 +123,9 @@ public class Bot extends Players{
                 int higher = hashigher(playedvalues.get(0));
                 werte.remove(higher);
                 return hand.remove(higher);
+            case 2:
+
+
 
 
             default: return hand.remove(0);
