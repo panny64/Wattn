@@ -108,7 +108,7 @@ public class Bot extends Players{
         ArrayList<Integer> playedvalues = new ArrayList<>();                                       //Übersetzen der bereits gespielten Karten in ihre Werte
 
         for(int i = 0; i < played.size(); i++){
-            playedvalues.add(giveValence(played.get(i), angesagteFarbe, angesagerSchlag);
+            playedvalues.add(giveValence(played.get(i), angesagteFarbe, angesagerSchlag));
         }
 
         int low = lowest();
