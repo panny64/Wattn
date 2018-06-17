@@ -103,18 +103,34 @@ public class Bot extends Players{
     }
 
     public Card playCard(ArrayList<Card> played, Farbe angesagteFarbe, Schlag angesagerSchlag){
-        int c = contain(new Card(Farbe.HERZ, Schlag.KÖNIG));
-        if(played.isEmpty() && c > 0){
-            return hand.remove(c);
+
+        int anzahl = played.size();                                                             //Anzahl der gespielten Karten
+        ArrayList<Integer> playedvalues = new ArrayList<>();                                       //Übersetzen der bereits gespielten Karten in ihre Werte
+
+        for(int i = 0; i < played.size(); i++){
+            playedvalues.add(giveValence(played.get(i), angesagteFarbe, angesagerSchlag);
+        }
+
+        int low = lowest();
+        int high = highest();
+
+        switch (anzahl){
+
+            case 0:
+                werte.remove(low);
+                return hand.remove(low);
+            case 1:
+                int higher = hashigher(playedvalues.get(0));
+                werte.remove(higher);
+                return hand.remove(higher);
+
+
+            default: return hand.remove(0);
         }
 
 
 
 
-
-
-
-        return hand.remove(0);
     }
 
     public int contain(Card c){
@@ -124,6 +140,48 @@ public class Bot extends Players{
             }
         }
         return  -1;
+    }
+
+    public int lowest(){
+        int z = 99;
+        for (int i = 0; i < werte.size(); i++){
+            if(z < werte.get(i)){
+                z = werte.get(i);
+
+            }
+
+        }                                   //                              -> WICHTIG WICHTIG WICHTIG 120*129 WICHTIG WICHTIG WICHTIG
+        return z;
+    }
+
+    public int highest(){
+        int z = 0;
+        for (int i = 0; i < werte.size(); i++){
+            if(z > werte.get(i)){
+                z = werte.get(i);
+
+            }
+
+        }
+        return z;
+    }
+
+    public int hashigher(int c){
+
+        for(int i = 0; i < werte.size(); i++){
+            if(highest() > werte.get(i) && werte.get(i) > c ){
+                return i;
+            }
+            if(werte.size() == 1)
+            {
+                return highest();
+            }
+            return lowest();
+
+
+
+        }
+        return lowest();
     }
 
 
