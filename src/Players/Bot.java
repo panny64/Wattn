@@ -9,13 +9,10 @@ import java.util.ArrayList;
 
 public class Bot extends Players{
 
-    ArrayList<Card> hand;
     ArrayList<Integer> werte;
 
     public Bot() {
-        hand = new ArrayList<>();
         werte = new ArrayList<>();
-
     }
 
 
@@ -32,8 +29,6 @@ public class Bot extends Players{
                 }
             }
         }
-
-
         int index = 0;
         int maxvalue = 0;
 
@@ -43,16 +38,12 @@ public class Bot extends Players{
                 maxvalue = counters[i];
             }
         }
-
-
         return schlag[index];
     }
 
     public Farbe FarbeAnsagen() {
-
         int[] counters = {0, 0, 0, 0};     //Eichel,Gras,Herz,Schellen
         Farbe[] farben = {Farbe.EICHEL, Farbe.GRAS, Farbe.HERZ, Farbe.SCHELLEN};
-
 
         for (int i = 0; i < 4; i++) {
             if (hand.get(i).getFarbe().equals(Farbe.EICHEL)) {
@@ -67,14 +58,8 @@ public class Bot extends Players{
     }
 
     public void Wertezuweisen(ArrayList<Card> hand, Farbe angesagteFarbe, Schlag angesagterSchlag){
-
-
         for(int i = 0; i < hand.size(); i++){
-
             werte.add(giveValence(hand.get(i),angesagteFarbe, angesagterSchlag));
-
-
-
             }
         }
 
@@ -103,7 +88,8 @@ public class Bot extends Players{
     }
     @Override
     public Card playCard(ArrayList<Card> played,Schlag angesagerSchlag,Farbe angesagteFarbe){
-
+        return hand.remove(0);
+        /*
         int anzahl = played.size();                                                                //Anzahl der gespielten Karten
         ArrayList<Integer> playedvalues = new ArrayList<>();                                       //Übersetzen der bereits gespielten Karten in ihre Werte
 
@@ -115,7 +101,6 @@ public class Bot extends Players{
         int high = highest();
 
         switch (anzahl){
-
             case 0:
                 werte.remove(low);
                 return hand.remove(low);
@@ -123,17 +108,8 @@ public class Bot extends Players{
                 int higher = hashigher(playedvalues.get(0));
                 werte.remove(higher);
                 return hand.remove(higher);
-            case 2:
-
-
-
-
             default: return hand.remove(0);
-        }
-
-
-
-
+        }*/
     }
 
     public int contain(Card c){
@@ -150,10 +126,8 @@ public class Bot extends Players{
         for (int i = 0; i < werte.size(); i++){
             if(z < werte.get(i)){
                 z = werte.get(i);
-
             }
-
-        }                                   //                              -> WICHTIG WICHTIG WICHTIG 120*129 WICHTIG WICHTIG WICHTIG
+        }
         return z;
     }
 
@@ -162,30 +136,21 @@ public class Bot extends Players{
         for (int i = 0; i < werte.size(); i++){
             if(z > werte.get(i)){
                 z = werte.get(i);
-
             }
-
         }
         return z;
     }
 
     public int hashigher(int c){
-
         for(int i = 0; i < werte.size(); i++){
             if(highest() > werte.get(i) && werte.get(i) > c ){
                 return i;
             }
-            if(werte.size() == 1)
-            {
+            if(werte.size() == 1){
                 return highest();
             }
             return lowest();
-
-
-
         }
         return lowest();
     }
-
-
 }

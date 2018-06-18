@@ -7,13 +7,9 @@ import java.util.Random;
 
 public final class CardGen {
 
-
-    private CardGen() {
-
-    }
+    private CardGen() {}
 
     public static Stack<Card> giveCards(){
-
         ArrayList<Card> mix = new ArrayList<>();
 
         Schlag[] schlag = {Schlag.SIEBEN,Schlag.ACHT,Schlag.NEUN,Schlag.ZEHN,Schlag.UNTER,Schlag.OBER,Schlag.KÖNIG,Schlag.SAU};
@@ -24,22 +20,14 @@ public final class CardGen {
                 mix.add(new Card(farbe[j],schlag[i]));
             }
         }
-
         Stack<Card> stack = shuffle(mix);
-
-
-
         return stack;
-
     }
 
     public static Stack<Card> shuffle(ArrayList<Card> sorted){
-
         Random random = new Random();
 
-
         for(int i = 0; i < 1000000; i++){
-
             int x = random.nextInt(31);         //random.nextInt(31) kann 0-31 an Werten annehmen
             int y = random.nextInt(31);         //same
 
@@ -48,21 +36,17 @@ public final class CardGen {
            Card swap = second;
            sorted.set(y,first);
            sorted.set(x,swap);
-
         }
         Stack<Card> shuffled = new Stack<>();
 
         while(!sorted.isEmpty()){
             shuffled.push(sorted.remove(0));
         }
-
         return shuffled;
-
     }
 
 
     public static void main(String[] args) {
-
         CardGen gen = new CardGen();
         ArrayList<Card> mix = new ArrayList<>();
 
@@ -87,11 +71,6 @@ public final class CardGen {
         for(int i = 0; i < 31; i++) {
             System.out.println(stack.peek().getFarbe() + " " +  stack.peek().getSchlag());
             stack.pop();
-
         }
-
     }
-
-
-
 }

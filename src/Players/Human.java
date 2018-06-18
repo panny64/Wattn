@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Human extends Players {
 
     public Human() {
-        ArrayList<Card> hand = new ArrayList<>();
     }
 
     public Schlag SchlagAnsagen() {

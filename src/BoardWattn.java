@@ -47,6 +47,7 @@ public class BoardWattn {
 
             aktuellerSpieler = ausspielerIndex;
         }else{
+            players[aktuellerSpieler].printHand();
             playCard(aktuellerSpieler);
             aktuellerSpieler = (aktuellerSpieler+1)%4;
         }
@@ -59,6 +60,7 @@ public class BoardWattn {
             resetRound();
         }
     }
+
     public void resetRound(){
 
         for(int i = 0;i<players.length;i++){
@@ -85,7 +87,7 @@ public class BoardWattn {
             players[i].addCard(l);
         }
         for(int i = 0;i<players.length;i++){
-            ArrayList<Card> l = new ArrayList<Card>();
+            ArrayList<Card> l = new ArrayList<>();
             l.add(allCards.pop());
             l.add(allCards.pop());
             players[i].addCard(l);
@@ -155,7 +157,6 @@ public class BoardWattn {
                 return i;
             }
         }
-
         return 0;
     }
 

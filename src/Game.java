@@ -53,18 +53,14 @@ public class Game implements Runnable {
         for(int j=0;j<4;j++){
             for(int i = 0;i<8;i++){
                 g.drawImage(Assets.cards[j*8+i],5+130*i,5+235*j,120,230,null);
-                System.out.println("dere");
             }
         }
-        System.out.println("end of giosögosdahgprisdghspdghüraeghinspdifhps");
-
         //End Drawing!
         bs.show();
         g.dispose();
     }
 
     public void run() {
-
         init();
 
         int fps = 60;
@@ -94,9 +90,7 @@ public class Game implements Runnable {
                 timer = 0;
             }
         }
-
         stop();
-
     }
 
     public int getWidth() {
