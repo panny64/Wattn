@@ -30,11 +30,14 @@ public class BoardWattn {
         players[1] = new Bot();
         players[2] = new Bot();
         players[3] = new Bot();
-
-        resetRound();
     }
 
     public void tick(){
+
+        //initialize game
+        if(allCards==null){
+            resetRound();
+        }
 
         int playerWhoWon = -1;
 

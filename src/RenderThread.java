@@ -1,38 +1,34 @@
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
+public class RenderThread implements Runnable {
 
-public class Game implements Runnable {
+    private BoardWattn boardWattn;
+
+    private int width, height;
 
     private Display display;
-    private int width, height;
     public String title;
-
-    private boolean running = false;
-    private Thread thread;
 
     private BufferStrategy bs;
     private Graphics g;
 
-    private BoardWattn boardWattn;
+    private boolean running = false;
+    private Thread thread;
 
-    public Game(String title, int width, int height) {
+    public RenderThread(BoardWattn boardWattn, String title, int width, int height) {
+        this.boardWattn = boardWattn;
         this.width = width;
         this.height = height;
         this.title = title;
     }
 
     private void init() {
+        System.out.println("display");
         display = new Display(title, width, height);
-
-        boardWattn = new BoardWattn();
 
         Assets assets = new Assets();
         assets.init();
-    }
-
-    private void tick() {
-        boardWattn.tick();
     }
 
     private void render() {
@@ -46,11 +42,14 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //Draw Here!
 
+
         for(int j=0;j<4;j++){
             for(int i = 0;i<8;i++){
                 g.drawImage(Assets.cards[j*8+i],5+130*i,5+235*j,120,230,null);
             }
         }
+        boardWattn.render();
+
         //End Drawing!
         bs.show();
         g.dispose();
@@ -74,20 +73,20 @@ public class Game implements Runnable {
             lastTime = now;
 
             if (delta >= 1) {
-                tick();
                 render();
                 ticks++;
                 delta--;
             }
 
             if (timer >= 1000000000) {
-                System.out.println("Ticks and Frames: " + ticks);
+                System.out.println("Frames: " + ticks);
                 ticks = 0;
                 timer = 0;
             }
         }
         stop();
     }
+
 
     public int getWidth() {
         return width;
@@ -115,5 +114,4 @@ public class Game implements Runnable {
             e.printStackTrace();
         }
     }
-
 }
