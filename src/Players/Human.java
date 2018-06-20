@@ -23,7 +23,8 @@ public class Human extends Players {
             System.out.println(i + ": " +schlag[i]);
         }
         Scanner scanner = new Scanner(System.in);
-        int schlagIndex = Integer.parseInt(scanner.next());
+        String playerInput = scanner.next();
+        int schlagIndex = Integer.parseInt(playerInput);
         return schlag[schlagIndex];
     }
 
