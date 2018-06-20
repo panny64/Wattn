@@ -2,16 +2,16 @@ import Cards.Card;
 import Cards.CardGen;
 import Cards.Farbe;
 import Cards.Schlag;
-import Players.*;
 
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 
 public class BoardWattn {
 
     Stack<Card> allCards;
-    Players [] players;
+    Players[] players;
     int [] scores;
     ArrayList<Card> cardsPlayed;
     int ausspielerIndex;
@@ -52,6 +52,11 @@ public class BoardWattn {
         }else{
             players[aktuellerSpieler].printHand();
             playCard(aktuellerSpieler);
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             aktuellerSpieler = (aktuellerSpieler+1)%4;
         }
 
@@ -101,8 +106,15 @@ public class BoardWattn {
         cardsPlayed.add(players[playerIndex].playCard(cardsPlayed,angesagterSchlag,angesagteFarbe));
     }
 
-    public void render(){
+    public synchronized void render(Graphics g){
+        players[0].render(g);
+        players[1].render(g);
+        players[2].render(g);
+        players[3].render(g);
 
+        for(int i = 0;i<cardsPlayed.size();i++){
+          g.drawImage(Assets.getImage(cardsPlayed.get(i)),400+120*i,365,120,230,null);
+        }
     }
 
     public int eval(ArrayList<Card> cardsPlayed) {

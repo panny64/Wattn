@@ -1,13 +1,12 @@
-package Players;
-
 import Cards.Card;
 import Cards.Farbe;
 import Cards.Schlag;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 
-public class Bot extends Players{
+public class Bot extends Players {
 
     ArrayList<Integer> werte;
 
@@ -17,7 +16,7 @@ public class Bot extends Players{
 
 
 
-    public Schlag SchlagAnsagen() {
+    public synchronized Schlag SchlagAnsagen() {
 
         int[] counters = {0, 0, 0, 0, 0, 0, 0, 0};  //7,8,9,10,U,O,K,S
         Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
@@ -41,7 +40,7 @@ public class Bot extends Players{
         return schlag[index];
     }
 
-    public Farbe FarbeAnsagen() {
+    public synchronized Farbe FarbeAnsagen() {
         int[] counters = {0, 0, 0, 0};     //Eichel,Gras,Herz,Schellen
         Farbe[] farben = {Farbe.EICHEL, Farbe.GRAS, Farbe.HERZ, Farbe.SCHELLEN};
 
@@ -86,9 +85,14 @@ public class Bot extends Players{
         }
         return 0;
     }
+
+    @Override
+    public void render(Graphics g) {
+    }
+
     @Override
     public Card playCard(ArrayList<Card> played,Schlag angesagerSchlag,Farbe angesagteFarbe){
-        return hand.remove(0);
+        return getCardAt(0);
         /*
         int anzahl = played.size();                                                                //Anzahl der gespielten Karten
         ArrayList<Integer> playedvalues = new ArrayList<>();                                       //Übersetzen der bereits gespielten Karten in ihre Werte

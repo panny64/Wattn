@@ -1,9 +1,8 @@
-package Players;
-
 import Cards.Card;
 import Cards.Farbe;
 import Cards.Schlag;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Human extends Players {
@@ -45,6 +44,13 @@ public class Human extends Players {
     }
 
     @Override
+    public void render(Graphics g) {
+        for(int i = 0;i<hand.size();i++){
+            g.drawImage(Assets.getImage(hand.get(i)),340+120*i,710,120,230,null);
+        }
+    }
+
+    @Override
     public Card playCard(ArrayList<Card> playedCards, Schlag angesagterSchlag, Farbe angesagteFarbe) {
         System.out.println("already played cards:");
         for(int i = 0;i<playedCards.size();i++){
@@ -59,6 +65,6 @@ public class Human extends Players {
         }
 
         int cardIndex = Integer.parseInt(scanner.next());
-        return hand.remove(cardIndex);
+        return getCardAt(cardIndex);
     }
 }

@@ -1,10 +1,8 @@
-package Players;
-
 import Cards.Card;
 import Cards.Farbe;
 import Cards.Schlag;
 
-import java.lang.reflect.Array;
+import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Players {
@@ -15,6 +13,7 @@ public abstract class Players {
         while (!cards.isEmpty()) {
             hand.add(cards.remove(0));
         }
+
     }
 
     public void emptyHands() {
@@ -23,6 +22,8 @@ public abstract class Players {
             hand.remove(0);
         }
     }
+
+    public abstract void render(Graphics g);
 
     public abstract Card playCard(ArrayList<Card> cardsPlayed, Schlag angesagterSchlag, Farbe angesagteFarbe);
 
@@ -39,5 +40,9 @@ public abstract class Players {
             System.out.print(hand.get(i).getFarbe() + "  " +hand.get(i).getSchlag() + "         ");
         }
         System.out.println();
+    }
+
+    public synchronized Card getCardAt(int i){
+        return hand.remove(i);
     }
 }
