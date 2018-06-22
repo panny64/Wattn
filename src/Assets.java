@@ -14,7 +14,7 @@ public class Assets {
         cards = new BufferedImage[32];
 
         try {
-            image = ImageIO.read(getClass().getResource("cardsImages.png"));
+            image = ImageIO.read(getClass().getResource("cardsImages2.png"));
         } catch (IOException e) {
             System.out.println("YOU SUCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
