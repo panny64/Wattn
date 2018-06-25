@@ -24,7 +24,6 @@ public class RenderThread implements Runnable {
     }
 
     private void init() {
-        System.out.println("display");
         display = new Display(title, width, height);
 
         Assets assets = new Assets();
@@ -41,14 +40,7 @@ public class RenderThread implements Runnable {
         //Clear Screen
         g.clearRect(0, 0, width, height);
         //Draw Here!
-        /*
-        for(int j=0;j<4;j++){
-            for(int i = 0;i<8;i++){
-                g.drawImage(Assets.cards[j*8+i],5+130*i,5+235*j,120,230,null);
-            }
-        }*/
         boardWattn.render(g);
-
         //End Drawing!
         bs.show();
         g.dispose();
@@ -78,7 +70,6 @@ public class RenderThread implements Runnable {
             }
 
             if (timer >= 1000000000) {
-                System.out.println("Frames: " + ticks);
                 ticks = 0;
                 timer = 0;
             }
