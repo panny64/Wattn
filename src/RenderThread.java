@@ -41,6 +41,8 @@ public class RenderThread implements Runnable {
         g.clearRect(0, 0, width, height);
         //Draw Here!
         boardWattn.render(g);
+
+
         //End Drawing!
         bs.show();
         g.dispose();

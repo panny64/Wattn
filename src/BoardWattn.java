@@ -115,6 +115,14 @@ public class BoardWattn {
         for(int i = 0;i<cardsPlayed.size();i++){
           g.drawImage(Assets.getImage(cardsPlayed.get(i)),400+120*i,365,120,230,null);
         }
+
+        if(angesagterSchlag!=null) {
+            g.drawString("angesageter Schlag: " + angesagterSchlag, 5, 940);
+        }
+        if(angesagteFarbe!=null) {
+            g.drawString("angesagete Farbe: " + angesagteFarbe, 5, 925);
+        }
+
     }
 
     public int eval(ArrayList<Card> cardsPlayed) {
