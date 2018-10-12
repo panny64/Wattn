@@ -1,13 +1,13 @@
 public class  Launcher {
     public static void main(String[] args) {
-       // Game game = new Game("Watten", 640*2, 480*2);
-       // game.start();
+        final int WIDTH=1280;
+        final int HEIGHT=720;
 
-        BoardWattn boardWattn = new BoardWattn();
+        BoardWattn boardWattn = new BoardWattn(WIDTH, HEIGHT);
 
         TickThread tickThread = new TickThread(boardWattn);
         tickThread.start();
-        RenderThread renderThread = new RenderThread(boardWattn,"Watten", 1280,720);
+        RenderThread renderThread = new RenderThread(boardWattn,"Watten", WIDTH,HEIGHT);
         renderThread.start();
     }
 }

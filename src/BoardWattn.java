@@ -19,12 +19,18 @@ public class BoardWattn {
     Schlag angesagterSchlag;
     Farbe angesagteFarbe;
 
-    public BoardWattn(){
+    int screenHeight;
+    int screenWidth;
+
+    public BoardWattn(int screenWidth, int screenHeight){
         players = new Players[4];
         scores = new int[4];
         cardsPlayed = new ArrayList<Card>();
         ausspielerIndex = 0;
         aktuellerSpieler = 0;
+
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
 
         players[0] = new Human();
         players[1] = new Bot();
