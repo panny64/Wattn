@@ -5,7 +5,7 @@ public class TickThread implements Runnable {
     private boolean running = false;
     private Thread thread;
 
-    public TickThread(BoardWattn boardWattn) {
+    TickThread(BoardWattn boardWattn) {
         this.boardWattn = boardWattn;
     }
 
@@ -15,7 +15,7 @@ public class TickThread implements Runnable {
 
     public void run() {
         int fps = 60;
-        double timePerTick = 1000000000 / fps;
+        double timePerTick = (double) 1000000000 / fps;
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();
@@ -43,7 +43,7 @@ public class TickThread implements Runnable {
         stop();
     }
 
-    public synchronized void start() {
+    synchronized void start() {
         if (running)
             return;
         running = true;
@@ -51,7 +51,7 @@ public class TickThread implements Runnable {
         thread.start();
     }
 
-    public synchronized void stop() {
+    private synchronized void stop() {
         if (!running)
             return;
         running = false;

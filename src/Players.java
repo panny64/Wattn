@@ -9,14 +9,14 @@ public abstract class Players {
 
     ArrayList<Card> hand = new ArrayList<>();
 
-    public void addCard(ArrayList<Card> cards) {
+    void addCard(ArrayList<Card> cards) {
         while (!cards.isEmpty()) {
             hand.add(cards.remove(0));
         }
 
     }
 
-    public void emptyHands() {
+    void emptyHand() {
         System.out.println("clearing hands now...");
         while (!hand.isEmpty()) {
             hand.remove(0);
@@ -35,14 +35,14 @@ public abstract class Players {
         return Farbe.EICHEL;
     }
 
-    public void printHand(){
-        for(int i = 0;i<hand.size();i++){
-            System.out.print(hand.get(i).getFarbe() + "  " +hand.get(i).getSchlag() + "         ");
+    void printHand(){
+        for(Card c : hand){
+            System.out.print(c.getFarbe() + "  " + c.getSchlag() + "         ");
         }
         System.out.println();
     }
 
-    public synchronized Card getCardAt(int i){
+    synchronized Card getCardAt(int i){
         return hand.remove(i);
     }
 }

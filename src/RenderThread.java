@@ -8,15 +8,12 @@ public class RenderThread implements Runnable {
     private int width, height;
 
     private Display display;
-    public String title;
-
-    private BufferStrategy bs;
-    private Graphics g;
+    private String title;
 
     private boolean running = false;
     private Thread thread;
 
-    public RenderThread(BoardWattn boardWattn, String title, int width, int height) {
+    RenderThread(BoardWattn boardWattn, String title, int width, int height) {
         this.boardWattn = boardWattn;
         this.width = width;
         this.height = height;
@@ -31,12 +28,12 @@ public class RenderThread implements Runnable {
     }
 
     private void render() {
-        bs = display.getCanvas().getBufferStrategy();
+        BufferStrategy bs = display.getCanvas().getBufferStrategy();
         if (bs == null) {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
-        g = bs.getDrawGraphics();
+        Graphics g = bs.getDrawGraphics();
         //Clear Screen
         g.clearRect(0, 0, width, height);
         //Draw Here!
@@ -52,12 +49,11 @@ public class RenderThread implements Runnable {
         init();
 
         int fps = 60;
-        double timePerTick = 1000000000 / fps;
+        double timePerTick = (double) 1000000000 / fps;
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();
         long timer = 0;
-        int ticks = 0;
 
         while (running) {
             now = System.nanoTime();
@@ -67,28 +63,17 @@ public class RenderThread implements Runnable {
 
             if (delta >= 1) {
                 render();
-                ticks++;
                 delta--;
             }
 
             if (timer >= 1000000000) {
-                ticks = 0;
                 timer = 0;
             }
         }
         stop();
     }
 
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public synchronized void start() {
+    synchronized void start() {
         if (running)
             return;
         running = true;
@@ -96,7 +81,7 @@ public class RenderThread implements Runnable {
         thread.start();
     }
 
-    public synchronized void stop() {
+    private synchronized void stop() {
         if (!running)
             return;
         running = false;

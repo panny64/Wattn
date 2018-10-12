@@ -1,8 +1,8 @@
 package Cards;
 
 public class Card {
-    Farbe farbe;
-    Schlag schlag;
+    private Farbe farbe;
+    private Schlag schlag;
 
     public Card(Farbe farbe,Schlag schlag){
         this.farbe = farbe;

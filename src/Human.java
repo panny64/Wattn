@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Human extends Players {
 
-    public Human() {
+    Human() {
     }
 
     public Schlag SchlagAnsagen() {
-        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
+        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KOENIG, Schlag.SAU};
 
         System.out.println("Deine Karten:");
-        for(int i = 0;i<hand.size();i++){
-            System.out.println(hand.get(i).getSchlag() + " " + hand.get(i).getFarbe());
+        for(Card c : hand){
+            System.out.println(c.getSchlag() + " " + c.getFarbe());
         }
         System.out.println("Bitte Schlag ansagen: ");
         for(int i = 0;i<schlag.length;i++){
@@ -31,8 +31,8 @@ public class Human extends Players {
         Farbe[] farben = {Farbe.EICHEL, Farbe.GRAS, Farbe.HERZ, Farbe.SCHELLEN};
 
         System.out.println("Deine Karten:");
-        for(int i = 0;i<hand.size();i++){
-            System.out.println(hand.get(i).getSchlag() + " " + hand.get(i).getFarbe());
+        for(Card c : hand){
+            System.out.println(c.getSchlag() + " " + c.getFarbe());
         }
         System.out.println("Bitte Farbe ansagen: ");
         for(int i = 0;i<farben.length;i++){
@@ -53,8 +53,8 @@ public class Human extends Players {
     @Override
     public Card playCard(ArrayList<Card> playedCards, Schlag angesagterSchlag, Farbe angesagteFarbe) {
         System.out.println("already played cards:");
-        for(int i = 0;i<playedCards.size();i++){
-            System.out.println(playedCards.get(i).getSchlag() + " " + playedCards.get(i).getFarbe());
+        for(Card c : playedCards){
+            System.out.println(c.getSchlag() + " " + c.getFarbe());
         }
 
         Scanner scanner = new Scanner(System.in);

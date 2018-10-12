@@ -10,7 +10,7 @@ public final class CardGen {
     public static Stack<Card> giveCards(){
         ArrayList<Card> mix = new ArrayList<>();
 
-        Schlag[] schlag = {Schlag.SIEBEN,Schlag.ACHT,Schlag.NEUN,Schlag.ZEHN,Schlag.UNTER,Schlag.OBER,Schlag.KÖNIG,Schlag.SAU};
+        Schlag[] schlag = {Schlag.SIEBEN,Schlag.ACHT,Schlag.NEUN,Schlag.ZEHN,Schlag.UNTER,Schlag.OBER,Schlag.KOENIG,Schlag.SAU};
         Farbe[] farbe = {Farbe.EICHEL,Farbe.GRAS,Farbe.HERZ,Farbe.SCHELLEN};
 
         for(Schlag s : schlag){

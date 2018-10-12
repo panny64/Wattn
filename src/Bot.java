@@ -8,22 +8,20 @@ import java.util.ArrayList;
 
 public class Bot extends Players {
 
-    ArrayList<Integer> werte;
+    private ArrayList<Integer> werte;
 
-    public Bot() {
+    Bot() {
         werte = new ArrayList<>();
     }
-
-
 
     public synchronized Schlag SchlagAnsagen() {
 
         int[] counters = {0, 0, 0, 0, 0, 0, 0, 0};  //7,8,9,10,U,O,K,S
-        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
+        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KOENIG, Schlag.SAU};
 
-        for(int i = 0; i < hand.size(); i++){
+        for(Card c : hand){
             for (int j = 0; j < schlag.length; j++){
-                if (schlag[j] == hand.get(i).getSchlag()){
+                if (schlag[j] == c.getSchlag()){
                     counters[j]++;
                 }
             }
@@ -42,7 +40,6 @@ public class Bot extends Players {
 
     public synchronized Farbe FarbeAnsagen() {
         int[] counters = {0, 0, 0, 0};     //Eichel,Gras,Herz,Schellen
-        Farbe[] farben = {Farbe.EICHEL, Farbe.GRAS, Farbe.HERZ, Farbe.SCHELLEN};
 
         for (int i = 0; i < 4; i++) {
             if (hand.get(i).getFarbe().equals(Farbe.EICHEL)) {
@@ -56,6 +53,7 @@ public class Bot extends Players {
         return Farbe.EICHEL;
     }
 
+    /*
     public void Wertezuweisen(ArrayList<Card> hand, Farbe angesagteFarbe, Schlag angesagterSchlag){
         for(int i = 0; i < hand.size(); i++){
             werte.add(giveValence(hand.get(i),angesagteFarbe, angesagterSchlag));
@@ -64,9 +62,9 @@ public class Bot extends Players {
 
 
     public int giveValence(Card c, Farbe angesagteFarbe, Schlag angesagterSchlag){
-        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
+        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KOENIG, Schlag.SAU};
 
-        if(c.equals(new Card(Farbe.HERZ,Schlag.KÖNIG))){
+        if(c.equals(new Card(Farbe.HERZ,Schlag.KOENIG))){
             return 13;
         }else if(c.equals(new Card(Farbe.SCHELLEN,Schlag.SIEBEN))){
             return 12;
@@ -85,6 +83,7 @@ public class Bot extends Players {
         }
         return 0;
     }
+ */
 
     @Override
     public void render(Graphics g) {
@@ -116,6 +115,7 @@ public class Bot extends Players {
         }*/
     }
 
+    /*
     public int contain(Card c){
         for(int i = 0; i < hand.size();i++){
             if(c.getSchlag() == hand.get(i).getSchlag() && c.getFarbe() == hand.get(i).getFarbe()){
@@ -123,9 +123,9 @@ public class Bot extends Players {
             }
         }
         return  -1;
-    }
+    }*/
 
-    public int lowest(){
+    private int lowest(){
         int z = 99;
         for (int i = 0; i < werte.size(); i++){
             if(z < werte.get(i)){
@@ -135,7 +135,7 @@ public class Bot extends Players {
         return z;
     }
 
-    public int highest(){
+    private int highest(){
         int z = 0;
         for (int i = 0; i < werte.size(); i++){
             if(z > werte.get(i)){
@@ -144,7 +144,7 @@ public class Bot extends Players {
         }
         return z;
     }
-
+/*
     public int hashigher(int c){
         for(int i = 0; i < werte.size(); i++){
             if(highest() > werte.get(i) && werte.get(i) > c ){
@@ -157,4 +157,5 @@ public class Bot extends Players {
         }
         return lowest();
     }
+    */
 }

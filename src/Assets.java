@@ -1,14 +1,13 @@
 import Cards.Card;
-import Cards.Schlag;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Assets {
-    public static BufferedImage[] cards;
+class Assets {
+    private static BufferedImage[] cards;
 
-    public void init() {
+    void init() {
         BufferedImage image = null;
 
         cards = new BufferedImage[32];
@@ -16,17 +15,19 @@ public class Assets {
         try {
             image = ImageIO.read(getClass().getResource("cardsImages2.png"));
         } catch (IOException e) {
-            System.out.println("YOU SUCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            System.out.println("Couldn't get CardImage.");
         }
 
         for (int j = 0; j < 4; j++) {
             for (int i = 0; i < 8; i++) {
-                cards[j * 8 + i] = image.getSubimage(10 + 140 * i, 10 + j * 250, 120, 230);
+                if (image != null) {
+                    cards[j * 8 + i] = image.getSubimage(10 + 140 * i, 10 + j * 250, 120, 230);
+                }
             }
         }
     }
 
-    public static BufferedImage getImage(Card c) {
+    static BufferedImage getImage(Card c) {
         int schlag=-1;
         int farbe=-1;
 
@@ -49,7 +50,7 @@ public class Assets {
             case OBER:
                 schlag = 5;
                 break;
-            case KÖNIG:
+            case KOENIG:
                 schlag = 6;
                 break;
             case SAU:

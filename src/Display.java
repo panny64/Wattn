@@ -3,15 +3,14 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-public class Display {
+class Display {
 
-    private JFrame frame;
     private Canvas canvas;
 
     private String title;
     private int width, height;
 
-    public Display(String title, int width, int height) {
+    Display(String title, int width, int height) {
         this.title = title;
         this.width = width;
         this.height = height;
@@ -20,7 +19,7 @@ public class Display {
     }
 
     private void createDisplay() {
-        frame = new JFrame(title);
+        JFrame frame = new JFrame(title);
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -37,12 +36,7 @@ public class Display {
         frame.pack();
     }
 
-    public Canvas getCanvas() {
+    Canvas getCanvas() {
         return canvas;
     }
-
-    public JFrame getFrame() {
-        return frame;
-    }
-
 }

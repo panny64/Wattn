@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
-public class BoardWattn {
+class BoardWattn {
 
     private Stack<Card> allCards;
     private Players[] players;
@@ -22,7 +22,7 @@ public class BoardWattn {
     private int screenHeight;
     private int screenWidth;
 
-    public BoardWattn(int screenWidth, int screenHeight){
+    BoardWattn(int screenWidth, int screenHeight){
         players = new Players[4];
         scores = new int[4];
         cardsPlayed = new ArrayList<>();
@@ -38,7 +38,7 @@ public class BoardWattn {
         players[3] = new Bot();
     }
 
-    public void tick(){
+    void tick(){
 
         //initialize game
         if(allCards==null){
@@ -76,9 +76,10 @@ public class BoardWattn {
     }
 
     private void resetRound(){
-        for(int i = 0;i<players.length;i++){
-            players[i].emptyHands();
+        for(Players player : players){
+            player.emptyHand();
         }
+
         allCards = CardGen.giveCards();
 
         handOutCards();
@@ -94,18 +95,19 @@ public class BoardWattn {
     }
 
     private void handOutCards(){
-        for(int i = 0;i<players.length;i++){
+        for(Players player : players){
             ArrayList<Card> l = new ArrayList<>();
             l.add(allCards.pop());
             l.add(allCards.pop());
             l.add(allCards.pop());
-            players[i].addCard(l);
+            player.addCard(l);
         }
-        for(int i = 0;i<players.length;i++){
+
+        for(Players player : players){
             ArrayList<Card> l = new ArrayList<>();
             l.add(allCards.pop());
             l.add(allCards.pop());
-            players[i].addCard(l);
+            player.addCard(l);
         }
     }
 
@@ -113,7 +115,7 @@ public class BoardWattn {
         cardsPlayed.add(players[playerIndex].playCard(cardsPlayed,angesagterSchlag,angesagteFarbe));
     }
 
-    public synchronized void render(Graphics g){
+    synchronized void render(Graphics g){
         players[0].render(g);
         players[1].render(g);
         players[2].render(g);
@@ -134,7 +136,7 @@ public class BoardWattn {
 
     private int eval(ArrayList<Card> cardsPlayed) {
 
-        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
+        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KOENIG, Schlag.SAU};
         int[] valances = new int[4];
         boolean highestDouble = false;
         int highestValenceIndex = 0;
@@ -210,9 +212,9 @@ public class BoardWattn {
     }
 
     private int giveValence(Card c){
-        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
+        Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KOENIG, Schlag.SAU};
 
-        if(c.equals(new Card(Farbe.HERZ,Schlag.KÖNIG))){
+        if(c.equals(new Card(Farbe.HERZ,Schlag.KOENIG))){
             return 13;
         }else if(c.equals(new Card(Farbe.SCHELLEN,Schlag.SIEBEN))){
             return 12;
