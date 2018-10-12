@@ -7,7 +7,7 @@ public class  Launcher {
 
         TickThread tickThread = new TickThread(boardWattn);
         tickThread.start();
-        RenderThread renderThread = new RenderThread(boardWattn,"Watten", 1280,960);
+        RenderThread renderThread = new RenderThread(boardWattn,"Watten", 1280,720);
         renderThread.start();
     }
 }
