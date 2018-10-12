@@ -76,21 +76,19 @@ public class BoardWattn {
     }
 
     private void resetRound(){
-
         for(int i = 0;i<players.length;i++){
             players[i].emptyHands();
         }
         allCards = CardGen.giveCards();
+
         handOutCards();
 
-        for(int i = 0;i<players.length;i++){
-            players[i].printHand();
-        }
         scores = new int[4];
 
         angesagterSchlag = null;
         angesagteFarbe = null;
 
+        // TODO: 12.10.2018 Ansager wechseln
         angesagterSchlag = players[0].SchlagAnsagen();
         angesagteFarbe = players[0].FarbeAnsagen();
     }
@@ -144,7 +142,7 @@ public class BoardWattn {
         for (int i = 0; i < cardsPlayed.size(); i++) {
             int valance = giveValence(cardsPlayed.get(i));
             valances[i] = valance;
-            if (valance > valances[highestValenceIndex]||i==0) {
+            if (valance > valances[highestValenceIndex] || i==0) {
                 highestDouble = false;
                 highestValenceIndex = i;
             } else if (valance == valances[highestValenceIndex]) {
@@ -156,6 +154,7 @@ public class BoardWattn {
             return highestValenceIndex;
         }
 
+        //wenn zwei angesagte Schläge existieren, gewinnt der, der als erstes gespielt wurde
         if(valances[highestValenceIndex]==9){
             for(int i = 0;i<valances.length;i++){
                 if(valances[i]==9){
@@ -166,7 +165,8 @@ public class BoardWattn {
 
         Card untersteKarte = cardsPlayed.get(0);
         Farbe untersteKarteFarbe = untersteKarte.getFarbe();
-        int hoechsterSchlagIndex = -1;
+
+       /* int hoechsterSchlagIndex = -1;
 
         for (int i = 0;i<schlag.length;i++){
             if(schlag[i]==untersteKarte.getSchlag()){
@@ -187,8 +187,26 @@ public class BoardWattn {
             if(untersteKarteFarbe == cardsPlayed.get(i).getFarbe() && cardsPlayed.get(i).getSchlag()==schlag[hoechsterSchlagIndex]){
                 return i;
             }
+        }*/
+
+        int hoechsterSchlagIndex = 0;
+        int maxIndexInHand = 0;
+
+        for(int i = 0; i < cardsPlayed.size(); i++){
+            if(cardsPlayed.get(i).getFarbe() == untersteKarteFarbe){
+                // TODO: 12.10.2018 "rang" eines schlages über statische methode finden
+                for(int j = 0; j < schlag.length; j++){
+                    if(schlag[j] == cardsPlayed.get(i).getSchlag() && hoechsterSchlagIndex < j){
+                        hoechsterSchlagIndex = j;
+                        maxIndexInHand = i;
+                    }
+                }
+            }
         }
-        return 0;
+
+
+
+        return maxIndexInHand;
     }
 
     private int giveValence(Card c){
