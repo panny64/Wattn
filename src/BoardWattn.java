@@ -75,7 +75,7 @@ public class BoardWattn {
         }
     }
 
-    public void resetRound(){
+    private void resetRound(){
 
         for(int i = 0;i<players.length;i++){
             players[i].emptyHands();
@@ -95,7 +95,7 @@ public class BoardWattn {
         angesagteFarbe = players[0].FarbeAnsagen();
     }
 
-    public void handOutCards(){
+    private void handOutCards(){
         for(int i = 0;i<players.length;i++){
             ArrayList<Card> l = new ArrayList<Card>();
             l.add(allCards.pop());
@@ -111,7 +111,7 @@ public class BoardWattn {
         }
     }
 
-    public void playCard(int playerIndex){
+    private void playCard(int playerIndex){
         cardsPlayed.add(players[playerIndex].playCard(cardsPlayed,angesagterSchlag,angesagteFarbe));
     }
 
@@ -134,7 +134,7 @@ public class BoardWattn {
 
     }
 
-    public int eval(ArrayList<Card> cardsPlayed) {
+    private int eval(ArrayList<Card> cardsPlayed) {
 
         Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
         int[] valances = new int[4];
@@ -147,7 +147,6 @@ public class BoardWattn {
             if (valance > valances[highestValenceIndex]||i==0) {
                 highestDouble = false;
                 highestValenceIndex = i;
-                continue;
             } else if (valance == valances[highestValenceIndex]) {
                 highestDouble = true;
             }
@@ -167,32 +166,32 @@ public class BoardWattn {
 
         Card untersteKarte = cardsPlayed.get(0);
         Farbe untersteKarteFarbe = untersteKarte.getFarbe();
-        int höchsterSchlagIndex = -1;
+        int hoechsterSchlagIndex = -1;
 
         for (int i = 0;i<schlag.length;i++){
             if(schlag[i]==untersteKarte.getSchlag()){
-                höchsterSchlagIndex = i;
+                hoechsterSchlagIndex = i;
                 break;
             }
         }
 
         for (int i = 1; i<cardsPlayed.size();i++){
-            for(int j = höchsterSchlagIndex;j<schlag.length;j++){
+            for(int j = hoechsterSchlagIndex;j<schlag.length;j++){
                 if(cardsPlayed.get(i).getFarbe() == untersteKarteFarbe && schlag[j] == cardsPlayed.get(i).getSchlag()){
-                    höchsterSchlagIndex = j;
+                    hoechsterSchlagIndex = j;
                 }
             }
         }
 
         for (int i = 0; i<cardsPlayed.size();i++){
-            if(untersteKarteFarbe == cardsPlayed.get(i).getFarbe() && cardsPlayed.get(i).getSchlag()==schlag[höchsterSchlagIndex]){
+            if(untersteKarteFarbe == cardsPlayed.get(i).getFarbe() && cardsPlayed.get(i).getSchlag()==schlag[hoechsterSchlagIndex]){
                 return i;
             }
         }
         return 0;
     }
 
-    public int giveValence(Card c){
+    private int giveValence(Card c){
         Schlag[] schlag = {Schlag.SIEBEN, Schlag.ACHT, Schlag.NEUN, Schlag.ZEHN, Schlag.UNTER, Schlag.OBER, Schlag.KÖNIG, Schlag.SAU};
 
         if(c.equals(new Card(Farbe.HERZ,Schlag.KÖNIG))){
