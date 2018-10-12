@@ -25,7 +25,7 @@ public class BoardWattn {
     public BoardWattn(int screenWidth, int screenHeight){
         players = new Players[4];
         scores = new int[4];
-        cardsPlayed = new ArrayList<Card>();
+        cardsPlayed = new ArrayList<>();
         ausspielerIndex = 0;
         aktuellerSpieler = 0;
 
@@ -45,7 +45,7 @@ public class BoardWattn {
             resetRound();
         }
 
-        int playerWhoWon = -1;
+        int playerWhoWon;
 
         if(cardsPlayed.size() == 4){
             playerWhoWon = (ausspielerIndex + eval(cardsPlayed)) % 4;
@@ -97,7 +97,7 @@ public class BoardWattn {
 
     private void handOutCards(){
         for(int i = 0;i<players.length;i++){
-            ArrayList<Card> l = new ArrayList<Card>();
+            ArrayList<Card> l = new ArrayList<>();
             l.add(allCards.pop());
             l.add(allCards.pop());
             l.add(allCards.pop());
