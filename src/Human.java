@@ -46,7 +46,7 @@ public class Human extends Players {
     @Override
     public void render(Graphics g) {
         for(int i = 0;i<hand.size();i++){
-            g.drawImage(Assets.getImage(hand.get(i)),340+120*i,710,120,230,null);
+            g.drawImage(Assets.getImage(hand.get(i)),340+120*i,490,120,230,null);
         }
     }
 

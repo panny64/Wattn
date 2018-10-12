@@ -62,9 +62,9 @@ public final class CardGen {
         for(int i = 0; i < mix.size(); i++){
             System.out.println(mix.get(i).getFarbe() + " " + mix.get(i).getSchlag() + " ");
         }
-        System.out.println("");
+        System.out.println();
         System.out.println("Ab jetzt gemischt");
-        System.out.println("");
+        System.out.println();
 
         Stack<Card> stack = shuffle(mix);
 

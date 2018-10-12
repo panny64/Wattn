@@ -10,17 +10,17 @@ import java.util.concurrent.TimeUnit;
 
 public class BoardWattn {
 
-    Stack<Card> allCards;
-    Players[] players;
-    int [] scores;
-    ArrayList<Card> cardsPlayed;
-    int ausspielerIndex;
-    int aktuellerSpieler;
-    Schlag angesagterSchlag;
-    Farbe angesagteFarbe;
+    private Stack<Card> allCards;
+    private Players[] players;
+    private int [] scores;
+    private ArrayList<Card> cardsPlayed;
+    private int ausspielerIndex;
+    private int aktuellerSpieler;
+    private Schlag angesagterSchlag;
+    private Farbe angesagteFarbe;
 
-    int screenHeight;
-    int screenWidth;
+    private int screenHeight;
+    private int screenWidth;
 
     public BoardWattn(int screenWidth, int screenHeight){
         players = new Players[4];
@@ -88,6 +88,9 @@ public class BoardWattn {
         }
         scores = new int[4];
 
+        angesagterSchlag = null;
+        angesagteFarbe = null;
+
         angesagterSchlag = players[0].SchlagAnsagen();
         angesagteFarbe = players[0].FarbeAnsagen();
     }
@@ -119,14 +122,14 @@ public class BoardWattn {
         players[3].render(g);
 
         for(int i = 0;i<cardsPlayed.size();i++){
-          g.drawImage(Assets.getImage(cardsPlayed.get(i)),400+120*i,365,120,230,null);
+          g.drawImage(Assets.getImage(cardsPlayed.get(i)),screenWidth/2 - 60 * cardsPlayed.size() + 120 * i,screenHeight/2 - 115,120,230,null);
         }
 
         if(angesagterSchlag!=null) {
-            g.drawString("angesageter Schlag: " + angesagterSchlag, 5, 940);
+            g.drawString("angesageter Schlag: " + angesagterSchlag, 5, screenHeight-20);
         }
         if(angesagteFarbe!=null) {
-            g.drawString("angesagete Farbe: " + angesagteFarbe, 5, 925);
+            g.drawString("angesagete Farbe: " + angesagteFarbe, 5, screenHeight-5);
         }
 
     }
